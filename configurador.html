@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Prototipo de configurador de computadoras.">
+<title>Núcleo PC | Configurador</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+:root{--ink:#17211c;--muted:#5b6861;--paper:#f5f6f0;--line:#dfe5dc;--lime:#c5fa65;--dark:#15231c;--green:#2a603c}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px Geist,system-ui,sans-serif}
+button,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #4c9259;outline-offset:4px}
+.shell{width:min(1280px,calc(100% - 96px));margin:auto}
+header{background:#fcfdf9;border-bottom:1px solid var(--line)}
+.nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:inline-flex;align-items:center;gap:10px;font-size:22px;font-weight:800;letter-spacing:-1px;white-space:nowrap}
+.mark{width:33px;height:33px;display:grid;place-items:center;border-radius:8px;background:var(--lime);font:700 20px "Space Mono",monospace}
+nav{display:flex;gap:30px;color:var(--muted);font-weight:600;font-size:14px}
+nav a:hover{color:var(--green)}
+.nav-action{padding:10px 15px;border:1px solid var(--line);border-radius:9px;font-weight:700;font-size:13px;white-space:nowrap}
+.primary{display:inline-flex;justify-content:center;align-items:center;gap:19px;border:0;border-radius:9px;background:var(--lime);color:#172515;padding:12px 17px;font-weight:800}
+.primary:hover{background:#dcff9c}
+.builder{padding:34px 0 45px;scroll-margin-top:16px}
+.builder-title{margin:0;font-size:34px;letter-spacing:-.06em}
+.subtitle{margin:5px 0 21px;color:var(--muted)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 365px;gap:23px;align-items:start}
+.tabs{display:flex;gap:7px;overflow:auto;padding:4px 4px 10px;margin:-4px -4px 11px}
+.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:9px 12px;font-size:13px;font-weight:700}
+.tab[aria-pressed=true]{background:var(--dark);border-color:var(--dark);color:var(--lime)}
+.list{display:grid;gap:10px}
+.part{display:grid;grid-template-columns:53px 1fr auto auto;align-items:center;gap:15px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px}
+.part.selected{border-color:#74a853;background:#fbfff6}
+.tile{width:53px;height:53px;border-radius:8px;display:grid;place-items:center;background:#e9f0e5;color:var(--green);font:700 12px "Space Mono",monospace}
+.part h3{margin:0 0 4px;font-size:15px}
+.spec{color:var(--muted);font-size:12px}
+.price{font-weight:800;white-space:nowrap}
+.add{border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:#f7f9f4;color:var(--ink);font-weight:700;font-size:13px}
+.add[aria-pressed=true]{background:#e4f8d2;border-color:#cde8b7;color:#2b5c31}
+.summary{background:var(--dark);color:white;border-radius:16px;padding:23px}
+.summary-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.summary h2{margin:0;font-size:23px;letter-spacing:-.05em}
+.count{font:700 11px "Space Mono",monospace;color:var(--lime);background:#293f30;padding:5px 8px;border-radius:6px;white-space:nowrap}
+.status{margin:17px 0;padding:12px;background:#263b2e;border-radius:9px;color:#d8ead9;font-size:13px;line-height:1.4}
+.status strong{display:block;color:var(--lime);margin-bottom:2px}
+.status.warn strong{color:#ffcf8c}
+.metrics{display:grid;gap:13px;margin:14px 0}
+.metric-label{display:flex;justify-content:space-between;gap:8px;margin-bottom:6px;color:#d8e1d9;font-size:13px}
+.metric-label output{color:var(--lime);font-family:"Space Mono",monospace}
+meter{display:block;width:100%;height:8px;appearance:none;background:#314538;border-radius:10px}
+meter::-webkit-meter-bar{background:#314538;border:0;border-radius:10px}
+meter::-webkit-meter-optimum-value{background:var(--lime);border-radius:10px}
+meter::-moz-meter-bar{background:var(--lime);border-radius:10px}
+.note{font-size:11px;color:#b9c9bc;line-height:1.45}
+.total{display:flex;justify-content:space-between;align-items:center;margin:17px 0 13px;padding-top:15px;border-top:1px solid #3a4c40;color:#d8e1d9}
+.total strong{font-size:23px;color:white}
+.summary .primary{width:100%}
+.summary .primary:disabled{opacity:.55;cursor:default}
+footer{border-top:1px solid var(--line);padding:17px 0;color:var(--muted);font-size:12px}
+dialog{border:1px solid var(--line);border-radius:15px;padding:24px;width:min(520px,calc(100% - 32px));color:var(--ink);background:#fcfdf9}
+dialog::backdrop{background:#0b140fbb}
+dialog h2{margin-top:0}
+dialog ul{padding-left:20px;line-height:1.7}
+@media(max-width:950px){.shell{width:calc(100% - 40px)}.layout{grid-template-columns:minmax(0,1fr) 300px}.part{gap:9px}.part .tile{display:none}.part{grid-template-columns:1fr auto auto}}
+@media(max-width:690px){.shell{width:calc(100% - 28px)}.nav{min-height:62px}.nav nav{display:none}.layout{grid-template-columns:1fr}.builder{padding-top:24px}.builder-title{font-size:29px}.part{grid-template-columns:1fr auto;gap:8px}.part .price{grid-row:2;grid-column:1}.part .add{grid-row:1 / span 2;grid-column:2}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.catalog h2{font-size:19px;margin:0 0 13px}
+.selection{list-style:none;margin:14px 0 0;padding:0}
+.selection li{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;border-bottom:1px solid #3a4c40;padding:8px 0}
+.selection small{display:block;color:#b9c9bc;margin-bottom:2px}
+.selection strong{display:block;font-size:13px}
+.selection button{border:1px solid #556c5c;border-radius:7px;background:transparent;color:#f4f8ee;padding:6px 8px;font-size:12px}
+.selection button:hover{background:#314538}
+.metrics-title{margin:18px 0 0;font-size:15px}
+@media(min-width:691px){.summary{position:sticky;top:16px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="shell nav">
+    <a class="brand" href="NucleoPC.html" aria-label="Núcleo PC, inicio"><span class="mark" aria-hidden="true">N</span>Núcleo PC</a>
+    <nav aria-label="Navegación principal"><a href="NucleoPC.html">Inicio</a><a href="#configurador">Componentes</a><a href="#resumen">Rendimiento</a></nav>
+    <a class="nav-action" href="#resumen">Mi ensamble <span aria-hidden="true">↗</span></a>
+  </div>
+</header>
+<main class="shell">
+  <section class="builder" id="configurador" aria-labelledby="config-title">
+    <h1 class="builder-title" id="config-title">Configura tu PC</h1>
+    <p class="subtitle">Selecciona una pieza por categoría para completar tu ensamble.</p>
+    <div class="layout">
+      <section class="catalog" aria-labelledby="catalog-title">
+        <h2 id="catalog-title">Componentes</h2>
+        <div class="tabs" id="categories" role="group" aria-label="Categorías de componentes"></div>
+        <div class="list" id="products" aria-label="Componentes disponibles"></div>
+      </section>
+      <aside class="summary" id="resumen" aria-labelledby="summary-title">
+        <div class="summary-head"><h2 id="summary-title">Mi ensamble</h2><span class="count" id="count"></span></div>
+        <ul class="selection" id="selection" aria-label="Piezas seleccionadas"></ul>
+        <div class="status" id="status" role="status"></div>
+        <h3 class="metrics-title">Rendimiento estimado</h3>
+        <div class="metrics">
+          <div><div class="metric-label"><label for="gaming">Rendimiento en juegos</label><output id="gaming-text"></output></div><meter id="gaming" min="0" max="100" value="0"></meter></div>
+          <div><div class="metric-label"><label for="balance">Balance CPU / GPU</label><output id="balance-text"></output></div><meter id="balance" min="0" max="100" value="0"></meter></div>
+        </div>
+        <p class="note">Índices de demostración. El cuello de botella depende del juego, la resolución y los ajustes.</p>
+        <div class="total"><span>Total estimado</span><strong id="total"></strong></div>
+        <button class="primary" id="review">Ver lista de compra <span aria-hidden="true">↗</span></button>
+      </aside>
+    </div>
+  </section>
+</main>
+<footer><div class="shell">Núcleo PC · Prototipo con precios ilustrativos en MXN.</div></footer>
+<dialog id="shopping" aria-labelledby="shopping-title">
+  <h2 id="shopping-title">Lista de compra</h2>
+  <ul id="shopping-list"></ul>
+  <p id="shopping-total"></p>
+  <form method="dialog"><button class="primary">Cerrar</button></form>
+</dialog>
+<script>
+const catalog = {
+  CPU: {label:'Procesador', items:[
+    {name:'AMD Ryzen 5 7600', spec:'6 núcleos · AM5 · hasta 5.1 GHz', price:3499, socket:'AM5', score:72},
+    {name:'AMD Ryzen 7 7800X3D', spec:'8 núcleos · AM5 · hasta 5.0 GHz', price:7499, socket:'AM5', score:95},
+    {name:'AMD Ryzen 5 5600', spec:'6 núcleos · AM4 · hasta 4.4 GHz', price:2299, socket:'AM4', score:53}
+  ]},
+  GPU: {label:'Tarjeta gráfica', items:[
+    {name:'NVIDIA GeForce RTX 4060', spec:'8 GB GDDR6 · 115 W', price:6199, score:70, psu:550},
+    {name:'AMD Radeon RX 7700 XT', spec:'12 GB GDDR6 · 245 W', price:8899, score:86, psu:700},
+    {name:'NVIDIA GeForce RTX 4070 SUPER', spec:'12 GB GDDR6X · 220 W', price:12499, score:95, psu:650}
+  ]},
+  MB: {label:'Placa madre', items:[
+    {name:'MSI PRO B650M-A WIFI', spec:'AM5 · DDR5 · Micro-ATX', price:3299, socket:'AM5', ram:'DDR5'},
+    {name:'MSI B550M PRO-VDH WIFI', spec:'AM4 · DDR4 · Micro-ATX', price:2399, socket:'AM4', ram:'DDR4'}
+  ]},
+  RAM: {label:'Memoria RAM', items:[
+    {name:'Kingston FURY Beast 32 GB', spec:'2 × 16 GB · DDR5-6000', price:1899, ram:'DDR5'},
+    {name:'Corsair Vengeance LPX 16 GB', spec:'2 × 8 GB · DDR4-3200', price:899, ram:'DDR4'}
+  ]},
+  SSD: {label:'Almacenamiento', items:[
+    {name:'WD Black SN770 1 TB', spec:'NVMe · M.2 · PCIe 4.0', price:1399},
+    {name:'Samsung 990 PRO 2 TB', spec:'NVMe · M.2 · PCIe 4.0', price:2899}
+  ]},
+  PSU: {label:'Fuente', items:[
+    {name:'Corsair CX550', spec:'550 W · 80 PLUS Bronze', price:1099, watts:550},
+    {name:'Corsair RM750e', spec:'750 W · 80 PLUS Gold', price:2199, watts:750}
+  ]},
+  CASE: {label:'Gabinete', items:[
+    {name:'Corsair 4000D Airflow', spec:'Torre media · Admite Micro-ATX', price:1899},
+    {name:'NZXT H5 Flow', spec:'Torre media · Admite Micro-ATX', price:1999}
+  ]},
+  COOL: {label:'Disipador', items:[
+    {name:'Thermalright Peerless Assassin 120 SE', spec:'Aire · Montaje AM4 y AM5', price:999},
+    {name:'Cooler Master Hyper 212 Halo', spec:'Aire · Montaje AM4 y AM5', price:849}
+  ]}
+};
+
+const selected = {};
+let category = 'CPU';
+const money = new Intl.NumberFormat('es-MX', {style:'currency', currency:'MXN', maximumFractionDigits:0});
+const get = id => document.getElementById(id);
+const sum = () => Object.values(selected).reduce((total, item) => total + item.price, 0);
+
+function renderProducts() {
+  get('products').innerHTML = catalog[category].items.map((item, index) => {
+    const active = selected[category] === item;
+    return `<article class="part ${active ? 'selected' : ''}">
+      <div class="tile" aria-hidden="true">${category}</div>
+      <div><h3>${item.name}</h3><div class="spec">${item.spec}</div></div>
+      <span class="price">${money.format(item.price)}</span>
+      <button class="add" data-index="${index}" aria-pressed="${active}" aria-label="${active ? 'Quitar' : 'Elegir'} ${item.name}">${active ? '✓ Elegido' : '+ Elegir'}</button>
+    </article>`;
+  }).join('');
+}
+
+function metric(id, value) {
+  get(id).value = value ?? 0;
+  get(id + '-text').textContent = value == null ? '—' : value + ' / 100';
+}
+
+function renderSummary() {
+  const {CPU, GPU, MB, RAM, PSU} = selected;
+  const warnings = [];
+  if (CPU && MB && CPU.socket !== MB.socket) warnings.push('El procesador y la placa madre usan sockets distintos.');
+  if (RAM && MB && RAM.ram !== MB.ram) warnings.push('La memoria y la placa madre usan generaciones DDR distintas.');
+  if (GPU && PSU && PSU.watts < GPU.psu) warnings.push('La fuente queda por debajo de la potencia de referencia de la GPU.');
+  const keys = Object.keys(catalog).filter(key => selected[key]);
+  get('selection').innerHTML = keys.map(key => `<li>
+    <div><small>${catalog[key].label}</small><strong>${selected[key].name}</strong></div>
+    <button data-remove="${key}" aria-label="Quitar ${selected[key].name}">Quitar</button>
+  </li>`).join('') || '<li>Aún no has elegido componentes.</li>';
+  const count = keys.length;
+  const complete = count === Object.keys(catalog).length;
+  const status = get('status');
+  status.classList.toggle('warn', warnings.length > 0);
+  const heading = warnings.length ? 'Revisa la compatibilidad' : complete ? 'Comprobaciones básicas correctas' : 'Ensamble en progreso';
+  const detail = warnings.join(' ') || (complete ? 'Socket, memoria y potencia de referencia revisados.' : 'Completa las categorías para revisar los requisitos básicos.');
+  status.innerHTML = `<strong>${heading}</strong>${detail}`;
+  get('count').textContent = count + ' / ' + Object.keys(catalog).length + ' piezas';
+  metric('gaming', CPU && GPU ? Math.round(CPU.score * .35 + GPU.score * .65) : null);
+  metric('balance', CPU && GPU ? 100 - Math.abs(CPU.score - GPU.score) : null);
+  get('total').textContent = money.format(sum()) + ' MXN';
+  get('review').disabled = count === 0;
+}
+
+get('categories').innerHTML = Object.entries(catalog).map(([key, group]) =>
+  `<button class="tab" data-category="${key}" aria-pressed="${key === category}">${group.label}</button>`
+).join('');
+
+get('categories').addEventListener('click', event => {
+  const tab = event.target.closest('button[data-category]');
+  if (!tab) return;
+  category = tab.dataset.category;
+  for (const button of get('categories').querySelectorAll('button')) {
+    button.setAttribute('aria-pressed', String(button === tab));
+  }
+  renderProducts();
+});
+
+get('products').addEventListener('click', event => {
+  const button = event.target.closest('button[data-index]');
+  if (!button) return;
+  const index = button.dataset.index;
+  const item = catalog[category].items[index];
+  if (selected[category] === item) delete selected[category];
+  else selected[category] = item;
+  renderProducts();
+  renderSummary();
+  get('products').querySelector(`[data-index="${index}"]`).focus();
+});
+
+get('selection').addEventListener('click', event => {
+  const button = event.target.closest('button[data-remove]');
+  if (!button) return;
+  const nextKey = button.parentElement.nextElementSibling?.querySelector('button')?.dataset.remove;
+  delete selected[button.dataset.remove];
+  renderProducts();
+  renderSummary();
+  const nextButton = get('selection').querySelector(`[data-remove="${nextKey}"]`);
+  const activeTab = get('categories').querySelector('[aria-pressed="true"]');
+  (nextButton || activeTab).focus();
+});
+
+get('review').addEventListener('click', () => {
+  get('shopping-list').innerHTML = Object.keys(catalog).filter(key => selected[key]).map(key =>
+    `<li><strong>${catalog[key].label}</strong> · ${selected[key].name} · ${money.format(selected[key].price)}</li>`
+  ).join('');
+  get('shopping-total').textContent = 'Total estimado: ' + money.format(sum()) + ' MXN';
+  get('shopping').showModal();
+});
+
+renderProducts();
+renderSummary();
+</script>
+</body>
+</html>
