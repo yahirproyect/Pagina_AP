@@ -1,0 +1,160 @@
+PC ARM — FUENTES DE LAS FOTOGRAFÍAS
+
+Versión para demostración académica. Las imágenes son fotografías de fichas de producto de fabricantes, reseñas y tiendas. Sus derechos pertenecen a los titulares respectivos.
+Las imágenes NO se incluyen como archivos físicos. La página requiere Internet para cargarlas y puede mostrar ilustraciones alternativas cuando algún servidor bloquea el acceso.
+Para una publicación comercial, conviene obtener las fotos autorizadas de los fabricantes o distribuidores y servirlas desde el propio servidor. No todos los modelos y revisiones comparten necesariamente la misma apariencia.
+
+PRODUCTO: r5600
+Fuente: Rozetka
+Ficha: https://hard.rozetka.com.ua/365663127/p365663127/
+Imagen: https://content1.rozetka.com.ua/goods/images/big/421893667.jpg
+
+PRODUCTO: r7600
+Fuente: Materiel.net
+Ficha: https://www.materiel.net/produit/202212130166.html
+Imagen: https://media.materiel.net/r900/products/MN0006005615.jpg
+
+PRODUCTO: r7800
+Fuente: DNS
+Ficha: https://dns-shop.kg/ru/product/84046f37e49fed20/processor-amd-ryzen-7-7800x3d-box/opinions/
+Imagen: https://c.dns-shop.ru/thumb/st4/fit/1200/1200/2ca180ee8f9b614658e8a499a000236b/q85_5265bd66ae55ca3374962bcc62985ecec25d098d122435e4597bf561c4d07b53.jpg
+
+PRODUCTO: i13400
+Fuente: Wccftech
+Ficha: https://wccftech.com/intel-core-i5-13400-cpu-to-offer-performance-similar-to-i5-12600k-but-at-a-better-value/
+Imagen: https://cdn.wccftech.com/wp-content/uploads/2022/12/Intel-Core-i5-13400-Core-i5-13400-Raptor-Lake-CPU-_2.jpg
+
+PRODUCTO: b550
+Fuente: AWD-IT
+Ficha: https://www.awd-it.co.uk/msi-b550m-pro-vdh-wifi-motherboard-matx-am4-ddr4-m-2-lan-wi-fi-usb-3-2-gen1-front-type-c-hdmi-displayport.html
+Imagen: https://www.awd-it.co.uk/media/catalog/product/b/5/b550m_pro_vdh_wifi_p2.jpg?bg-color=255%2C255%2C255&canvas=680%3A680&fit=bounds&height=680&optimize=high&width=680
+
+PRODUCTO: b650
+Fuente: PC Koubou
+Ficha: https://www.pc-koubou.jp/products/detail.php?product_id=931139
+Imagen: https://www.pc-koubou.jp/upload/save_image/10111115_6344d1de616bf.jpg
+
+PRODUCTO: b650atx
+Fuente: Box.co.uk
+Ficha: https://box.co.uk/90mb1bz0-m0eay0-asus-amd-tuf-gaming-b650-plus
+Imagen: https://content.box.co.uk/website-assests/90MB1BZ0-M0EAY0-Section-1.jpg
+
+PRODUCTO: b760
+Fuente: PC Case Gear
+Ficha: https://www.pccasegear.com/products/60669/msi-pro-b760m-a-wifi-ddr4-motherboard
+Imagen: https://files.pccasegear.com/images/1673925805-PRO-B760M-A-WIFI-DDR4-thb.jpg
+
+PRODUCTO: ram16d4
+Fuente: Corsair / Flixcar
+Ficha: https://www.pccomponentes.com/corsair-vengeance-lpx-ddr4-3200-pc4-25600-16gb-2x8gb-cl16-negro
+Imagen: https://media.flixcar.com/webp/synd-asset/Corsair-112074824--CMK16GX4M2E3200C16-Gallery-VENG-LPX-BLK-01-zoom.png
+
+PRODUCTO: ram32d4
+Fuente: Heureka
+Ficha: https://www.pazaruvaj.com/p/kingston-fury-beast-32gb-2x16gb-ddr4-3200mhz-kf432c16bbk2-32-pP690366684/
+Imagen: https://img-cdn.heureka.group/v1/7fc236e8-b034-5ebe-a1bf-5e43dc58f2fd.jpg
+
+PRODUCTO: ram16d5
+Fuente: Dateks
+Ficha: https://www.dateks.lv/en/cenas/atmina-ram/818628-kingston-fury-beast-black-ddr5-16gb-5600mhz-cl40-kit-of-2
+Imagen: https://www.dateks.lv/images/pic/2400/2400/473/1157.jpg
+
+PRODUCTO: ram32d5
+Fuente: Proline
+Ficha: https://proline.pl/pamiec-kingston-fury-beast-black-32gb-2x16gb-ddr5-6000-cl30-expo-kf560c30bbek2-32-p8122448
+Imagen: https://static.proline.pl/i/p/8122448/0000007021_0.jpg
+
+PRODUCTO: g4060
+Fuente: PcComponentes
+Ficha: https://www.pccomponentes.com/msi-geforce-rtx-4060-ventus-2x-black-oc-8gb-gddr6-dlss3
+Imagen: https://img.pccomponentes.com/articles/1073/10738412/1860-msi-geforce-rtx-4060-ventus-2x-black-oc-8gb-gddr6-dlss3.jpg
+
+PRODUCTO: g7700
+Fuente: Desktop.bg
+Ficha: https://desktop.bg/archive/desktop_video_cards-amd-Radeon_RX_7700_XT-sapphire_pulse_amd_radeon_rx_7700_xt_12gb
+Imagen: https://desktop.bg/system/images/420397/original/sapphire_pulse_amd_radeon_rx_7700_xt_12gb.jpg
+
+PRODUCTO: g4070
+Fuente: ZOTAC
+Ficha: https://www.zotac.com/es/product/graphics_card/zotac-gaming-geforce-rtx-4070-super-twin-edge-12gb-gddr6x-0
+Imagen: https://www.zotac.com/es/system/files/styles/w1024/private/product_gallery/graphics_cards/zt-d40720e-10m-image02.jpg?itok=k4ztCaR9
+
+PRODUCTO: sn770
+Fuente: Tom’s Hardware
+Ficha: https://www.tomshardware.com/reviews/wd-black-sn770-ssd-review
+Imagen: https://cdn.mos.cms.futurecdn.net/DvsppiWz9hGAjDUPiivHSB.jpg
+
+PRODUCTO: p3plus
+Fuente: Proshop
+Ficha: https://www.proshop.at/SSD/Crucial-P3-Plus-SSD-2TB-M2-2280-PCIe-40/3091253
+Imagen: https://www.proshop.at/Images/1600x1200/3091253_05f43b131801.jpg
+
+PRODUCTO: s990
+Fuente: Samsung
+Ficha: https://www.samsung.com/sec/memory-storage/990-pro-nvme-ssd-d2c2/MZ-V9P2T0BW/
+Imagen: https://images.samsung.com/kdp/goods/2022/09/21/2142dd96-e1df-4364-8893-185ded5f5c7f.png
+
+PRODUCTO: cx550
+Fuente: TNC Store
+Ficha: https://www.tncstore.vn/nguon-corsair-cx550-550w-80-plus-bronze.html
+Imagen: https://www.tncstore.vn/media/product/9915-1599618161-1737322943-ngu-n-cors.jpg
+
+PRODUCTO: cx650
+Fuente: DynaQuest PC
+Ficha: https://dynaquestpc.com/collections/components-power-supply-500-650-watts
+Imagen: https://dynaquestpc.com/cdn/shop/files/344_fcb374ee-ae8b-46c3-aadd-0253cfcaf35a.png?v=1761039112&width=460
+
+PRODUCTO: rm750
+Fuente: Akakçe
+Ficha: https://www.akakce.com/power-supply/en-ucuz-corsair-rm750e-cp-9020262-eu-750-w-fiyati,496768083.html
+Imagen: https://cdn.akakce.com/z/corsair/corsair-rm750e-cp-9020262-eu-750-w.jpg
+
+PRODUCTO: rm850
+Fuente: PCC Computers
+Ficha: https://pccaus.com/products/corsair-rm850e-series-850w-power-supply-cp-9020296-au
+Imagen: https://pccaus.com/storage/media/xDAUPVN6HrcyDPsul6KNCOa3aZXqme6MWb8vdrU5.png
+
+PRODUCTO: corsair4000
+Fuente: LCDI Gaming
+Ficha: https://lcdi.fr/products/corsair-4000d-airflow-noir
+Imagen: https://lcdi.fr/cdn/shop/files/corsair-4000d-airflow-noir.jpg?v=1745245056
+
+PRODUCTO: h5flow
+Fuente: TechSpot
+Ficha: https://www.techspot.com/products/cases/nzxt-h5-flow.262110/
+Imagen: https://www.techspot.com/images/products/2022/cases/org/2022-11-14-product-5.jpg
+
+PRODUCTO: q300l
+Fuente: Supremo Informática
+Ficha: https://www.supremoinformatica.com.br/gabinete-gamer-cooler-master-masterbox-q300l
+Imagen: https://cdn.dooca.store/34971/products/gallery-1-min-image_620x620%2Bfill_ffffff.png?v=1715617083&webp=0
+
+PRODUCTO: peerless
+Fuente: Akakçe
+Ficha: https://forum.donanimarsivi.com/konu/thermalright-peerless-assassin-120-bu-sogutucularin-farki-nedir.987134/
+Imagen: https://cdn.akakce.com/z/thermalright/thermalright-peerless-assassin-120-se-cpu-tl-c12c.jpg
+
+PRODUCTO: hyper212
+Fuente: BestCell
+Ficha: https://www.bestcell.com.ec/producto/cooler-de-aire-cooler-master-hyper-212-halo-rgb-negro-lga1700
+Imagen: https://www.bestcell.com.ec/imgadmin/storage/imagenes_articulos/1329/6329.jpg.webp
+
+PRODUCTO: __wraith
+Fuente: TerabyteShop
+Ficha: https://www.terabyteshop.com.br/produto/33509/processador-amd-ryzen-5-4600g-37ghz-42ghz-turbo-6-cores-12-threads-cooler-wraith-stealth-am4-100-100000147box-open-box
+Imagen: https://img.terabyteshop.com.br/produto/g/processador-amd-ryzen-5-4600g-37ghz-42ghz-turbo-6-cores-12-threads-cooler-wraith-stealth-am4-100-100000147box_141668.jpg
+
+
+FOTOGRAFÍAS AÑADIDAS EN LA VERSIÓN AMPLIADA
+r5700x — Vipasa: https://vipasa.pe/4641-superlarge_default/procesador-amd-ryzen-7-5700x-340-460ghz-32mb-l3-cache-8-core-am4-7nm-65w.jpg
+b550ds3h — GIGABYTE: https://static.gigabyte.com/StaticFile/Image/Global/07df6494838d707fe3cb46ba44b84889/Product/35282/png
+b550gen3 — LDLC: https://media.ldlc.com/r1600/ld/products/00/05/97/28/LD0005972819.jpg
+b650ds3h — DD Tech México: https://ddtech.mx/assets/uploads/7161ab854dbe0661e5eec56a1b9660d1.jpg
+b650prime — Ignite Store México: https://ignitestore.mx/assets/uploads/sw_prime_b650_a_axii_6.png
+b760ds3h — Microless: https://microless.com/cdn/products/70e4c2c8d0b47179d1585e84f87ce2fb-hi.jpg
+b760prime — Mindfactory / Macovi: https://image1280.macovi.de/images/product_images/1280/1613583_0__9213586.jpg
+b760d5 — idealo: https://cdn.idealo.com/folder/Product/202693/3/202693309/s1_produktbild_max_1/msi-pro-b760m-a-wifi.jpg
+g3060 — Allegro: https://a.allegroimg.com/s512/116631/3148afc94811ade6eab01f8e4f71/Gamingowa-Karta-graficzna-Gigabyte-GeForce-RTX-3060-OC-12GB-GDDR6-DX12-DLSS-Stan-opakowania-oryginalne
+g7600 — PC Case Gear: https://files.pccasegear.com/images/1684803557-RX7600-MECH-2X-CLASSIC-8G-OC-thb.jpg
+p3plus1 — Datablitz: https://ecommerce.datablitz.com.ph/cdn/shop/files/bxdgnxfg_800x.jpg?v=1749543843
+ch370 — Adorama: https://www.adorama.com/images/Large/DCRCH37BKAG1_Color-Black.jpg

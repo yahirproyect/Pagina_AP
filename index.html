@@ -10,6 +10,8 @@
 body{margin:0;background:#0c1710;color:#f4f8ee;font:16px Geist,system-ui,sans-serif}
 a{color:inherit;text-decoration:none}
 a:focus-visible{outline:2px solid #c5fa65;outline-offset:5px}
+.top-link{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border:1px solid #4b674a;border-radius:9px;color:#c5fa65;font-size:13px;font-weight:700;transition:background .15s}
+.top-link:hover{background:#263b2d}
 .shell{width:min(1272px,calc(100% - 100px));margin:auto}
 header{border-bottom:1px solid #26372b}
 .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between}
@@ -27,7 +29,9 @@ p{max-width:390px;margin:0 0 30px;color:#ccd9ce;line-height:1.6}
 .cta:hover{background:#dcff9c}
 @media(max-width:750px){
 .shell{width:calc(100% - 40px)}
-.nav{min-height:62px}
+.nav{min-height:62px;gap:12px}
+.top-link{font-size:11px;padding:9px 10px}
+.brand{font-size:19px}
 .hero{min-height:calc(100svh - 63px);align-items:end}
 .art{inset:0 0 28%;background-position:center}
 .hero::before{background:linear-gradient(0deg,#101e17 18%,#101e17fa 31%,#101e1720 68%,transparent)}
@@ -37,7 +41,7 @@ h1{font-size:clamp(49px,10.8vw,78px)}
 </style>
 </head>
 <body>
-<header><div class="shell nav"><a class="brand" href="NucleoPC.html"><span class="mark" aria-hidden="true">N</span>PC Arm</a></div></header>
+<header><div class="shell nav"><a class="brand" href="index.html" aria-label="PC Arm, página de inicio"><span class="mark" aria-hidden="true">N</span>PC Arm</a><a class="top-link" href="configurador.html">Abrir configurador <span aria-hidden="true">→</span></a></div></header>
 <main class="hero">
   <div class="art" aria-hidden="true"></div>
   <div class="shell copy">
