@@ -6,17 +6,19 @@
 <meta name="theme-color" content="#f5f7f0">
 <meta name="description" content="Arma tu PC paso a paso. Explora componentes, comprueba compatibilidad y revisa estimaciones orientativas de rendimiento.">
 <title>PC Arm — Configurador inteligente</title>
+<link rel="icon" type="image/png" href="media/favicon-pc-arm.png">
 <style>
 :root{--bg:#f5f7f0;--paper:#fff;--ink:#15221b;--muted:#657268;--stroke:#dce5d8;--dark:#17271e;--lime:#cafa72;--green:#287544;--green-bg:#e6f5e8;--orange:#a86519;--orange-bg:#fff1db;--red:#b33634;--red-bg:#fdebe8;--shadow:0 12px 48px rgba(26,48,26,.055)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 'DM Sans',system-ui,sans-serif}
+body{margin:0;background:linear-gradient(120deg,#fbfcf9 0%,#f6f9f3 48%,#eaf3e6 100%);background-attachment:fixed;color:var(--ink);font:15px/1.45 'DM Sans',system-ui,sans-serif}
 button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.52}a{color:inherit;text-decoration:none}
 :focus-visible{outline:3px solid #4e955c;outline-offset:3px}
 .wrap{width:min(1500px,calc(100% - 72px));margin-inline:auto}
 header{background:rgba(255,255,255,.9);border-bottom:1px solid var(--stroke)}
-.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{display:flex;align-items:center;gap:11px;font:700 22px 'Space Grotesk',sans-serif;letter-spacing:-.06em}
+.nav{min-height:101px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:5px}
+.brand{display:flex;align-items:center;flex-shrink:0;line-height:0}
+.brand-logo{display:block;width:211px;height:auto;background:transparent}
 .brand-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:var(--dark);color:var(--lime);font-size:22px;font-weight:700}
 .brand small{display:block;color:var(--muted);font:500 10px 'DM Sans',sans-serif;letter-spacing:.13em;text-transform:uppercase;margin-top:-3px}
 .nav-center{display:flex;gap:29px;color:#526359;font-size:13px;font-weight:700}
@@ -158,8 +160,68 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 @media(max-width:930px){.workspace{grid-template-columns:195px 1fr}.summary{grid-column:2;position:static}.steps{grid-row:span 2}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:730px){.nav{height:64px}.nav-center{display:none}.hero{padding-top:25px;align-items:flex-start}.hero-tip{display:none}.workspace{display:flex;flex-direction:column}.steps{position:static;width:100%;padding:16px}.step-list{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.step-button{display:flex;align-items:center;justify-content:center;gap:0;padding:8px 3px}.step-button .step-copy,.step-button .step-check{display:none}.step-button.current{background:#e7f4dc}.step-final{margin-top:0;padding:0;border:0}.steps-foot{display:none}.step-progress{margin-bottom:12px}.stage,.summary{width:100%}.stage{min-height:0}.summary{position:static}}
 @media(max-width:540px){.wrap{width:calc(100% - 26px)}.hero h1{font-size:32px}.hero p{font-size:12px}.product-grid,.selection-grid{grid-template-columns:1fr}.stage{padding:17px}.stage h2{font-size:24px}.filter-label{width:100%}.search{max-width:none}.product-art{height:150px}.product{display:grid;grid-template-columns:128px 1fr}.product-art{height:100%;min-height:188px}.art-caption{font-size:8px}.product-body{padding:11px}.product h3{font-size:13px;min-height:auto;margin:8px 0 4px}.product .desc{font-size:11px}.pills{margin:7px 0 5px}.product-price{font-size:15px}.pick-btn{padding:8px 10px}.product-bottom{display:flex;flex-wrap:wrap}.step-actions{align-items:stretch}.action-help{width:100%}.action-buttons{width:100%}.action-buttons .btn{flex:1}.nav-tag{display:none}}
-@media(max-width:730px){.nav-home{display:inline-flex!important;white-space:nowrap;padding:8px 10px;font-size:11px}.brand{font-size:19px}.brand-mark{width:33px;height:33px}}
+@media(max-width:730px){.nav-home{display:inline-flex!important;white-space:nowrap;padding:8px 10px;font-size:11px}.brand-logo{width:152px}.nav{min-height:77px;padding-block:4px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+
+
+/* Nuevo asistente inicial: modo libre o propuesta de componentes por presupuesto. */
+.workspace.setup-mode{display:block;max-width:1000px;margin-inline:auto}
+.workspace.setup-mode>.steps,.workspace.setup-mode>.summary{display:none}
+.workspace.setup-mode>.stage{min-height:0;padding:clamp(22px,4vw,43px)}
+.setup-kicker{font-size:11px;letter-spacing:.12em;color:#318148;font-weight:800}
+.setup-title{font:700 clamp(29px,3.5vw,43px)/1.09 'Space Grotesk',sans-serif;letter-spacing:-.055em;margin:10px 0 12px}
+.setup-lead{max-width:780px;color:#647669;line-height:1.65;font-size:14px;margin:0 0 23px}
+.setup-modes{display:grid;grid-template-columns:1.35fr 1fr;gap:15px;align-items:stretch}
+.setup-choice{border:1px solid #d9e6d5;border-radius:16px;background:linear-gradient(145deg,#fcfffa,#f1f8ee);padding:22px;min-width:0}
+.setup-choice.free{background:#fff}
+.setup-choice .choice-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#e5f3df;color:#34734a;font-size:20px;margin-bottom:12px}
+.setup-choice h3{font:700 20px 'Space Grotesk',sans-serif;letter-spacing:-.035em;margin:0 0 7px}
+.setup-choice p{font-size:12px;color:#617468;line-height:1.6;margin:0 0 17px}
+.budget-field{display:flex;align-items:center;gap:12px;border:1px solid #cadaC4;background:white;border-radius:12px;padding:10px 13px;margin:14px 0 9px}
+.budget-field:focus-within{outline:3px solid #d7efc9}
+.budget-field strong{font-size:19px;color:#267446}
+.budget-field input{border:0;outline:none;width:100%;font:800 24px 'Space Grotesk',sans-serif;color:#173e2c;background:transparent;min-width:0}
+.budget-field small{color:#6f8974;font-size:10px;font-weight:800;white-space:nowrap}
+.budget-presets{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 14px}
+.budget-preset{border:1px solid #d2e6c9;background:white;border-radius:999px;color:#3c6e43;font-weight:800;font-size:11px;padding:7px 11px}
+.budget-preset.selected{background:#22452f;color:#edffdd;border-color:#22452f}
+.usage-field{margin-top:14px}
+.usage-field>span{display:block;font-size:12px;color:#506854;font-weight:800;margin-bottom:8px}
+.usage-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.usage-options label{font-size:11px;display:flex;align-items:center;gap:5px;border:1px solid #d9e7d5;background:#fff;padding:9px 7px;border-radius:9px;cursor:pointer;font-weight:700;white-space:nowrap}
+.usage-options label:has(input:checked){background:#eaf6e1;border-color:#83b779;color:#245b34}
+.usage-options input{accent-color:#348347;flex:none}
+.budget-help{color:#79907a;font-size:11px;line-height:1.55;margin-top:12px}
+.budget-error{color:#af3434;font-weight:800;font-size:12px;margin:9px 0;min-height:1em}
+.setup-resume{margin-top:15px;padding:12px 16px;background:#f5f9f1;border:1px solid #dce9d4;border-radius:11px;color:#56705e;font-size:12px;text-align:center}
+.setup-resume button{background:transparent;border:0;color:#276b42;font-weight:800;text-decoration:underline;text-underline-offset:3px;padding:2px 6px;cursor:pointer}
+.setup-resume button:hover{color:#163e26}
+.setup-action{display:inline-flex;align-items:center;justify-content:center;width:100%;margin-top:15px;border:0;border-radius:10px;background:#1d3a27;color:#e4facb;font-weight:800;font-size:13px;padding:13px 12px;min-height:44px}
+.setup-action:hover{background:#31563b}
+.setup-action.soft{background:#eaf4e4;color:#2f6640}
+.setup-action.soft:hover{background:#dbeed2}
+.setup-footer{font-size:11px;color:#758574;margin-top:19px;border-top:1px solid #e5eee0;padding-top:13px}
+.budget-strip{border:1px solid #d7e8d0;background:linear-gradient(110deg,#f4faf0,#eef7e8);color:#386348;border-radius:10px;padding:11px 13px;margin:16px 0 12px;font-size:12px;line-height:1.5}
+.budget-strip strong{color:#1f5631}
+.budget-strip.over{border-color:#e4b9ae;background:#fff4ef;color:#914131}.budget-strip.over strong{color:#9b3328}
+.budget-strip a,.budget-strip button{border:0;background:none;color:inherit;text-decoration:underline;font-weight:800;cursor:pointer;padding:0;margin-left:6px}
+.summary-budget{color:#dcf0df;border:1px solid #405e47;border-radius:10px;padding:10px;margin-top:12px;font-size:11px;line-height:1.6;background:#233c2c}
+.summary-budget.over{background:#4c3329;border-color:#946352;color:#ffe7d8}
+.summary-budget strong{display:block;font-size:12px;color:#d2f69b}
+.summary-budget.over strong{color:#ffd3b3}
+.summary-budget button{background:transparent;border:0;color:#c3e89b;padding:0;margin-top:5px;text-decoration:underline;font-size:11px;font-weight:800;cursor:pointer}
+.proposal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+.proposal-part{display:flex;align-items:center;gap:10px;padding:12px;background:#fbfdfa;border:1px solid #e1ebdd;border-radius:12px;min-width:0}
+.proposal-part .proposal-icon{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:9px;background:#e8f4e4;color:#478551;font-size:17px}
+.proposal-part .proposal-info{flex:1;min-width:0}
+.proposal-part small{display:block;font-size:10px;color:#718371}
+.proposal-part strong{display:block;font-size:12px;line-height:1.35;overflow-wrap:anywhere;margin:3px 0}
+.proposal-part b{font-size:12px;color:#286339}
+.proposal-part button{font-size:11px;border:0;border-radius:8px;background:#eaf5e4;color:#25623d;padding:7px;font-weight:800;cursor:pointer}
+.proposal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}
+.proposal-actions .btn{min-height:44px}
+@media(max-width:740px){.setup-modes,.proposal-grid{grid-template-columns:1fr}.usage-options{grid-template-columns:1fr 1fr}.setup-choice{padding:18px}}
+@media(max-width:390px){.usage-options{grid-template-columns:1fr}.budget-field input{font-size:21px}}
 
 /* Tiendas: búsquedas del producto, NO enlaces a inventario garantizado. */
 .shop-links{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
@@ -180,7 +242,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </head>
 <body>
 <header><div class="wrap nav">
-<a class="brand" href="index.html" aria-label="PC Arm, volver a la página de inicio"><span class="brand-mark">N</span><span>PC Arm<small>configurador inteligente</small></span></a>
+<a class="brand" href="index.html" aria-label="PC Arm, volver a la página de inicio"><img class="brand-logo" src="media/logo-pc-arm.png" width="772" height="339" alt="PC Arm — Arma tu PC, compara y revisa su rendimiento"></a>
 <a class="nav-tag nav-home" href="index.html" aria-label="Volver al inicio">← Regresar al inicio</a>
 </div></header>
 <main class="wrap" id="inicio">
@@ -188,10 +250,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <div class="workspace" id="configurador">
 <aside class="steps panel" aria-label="Pasos del configurador"><p class="aside-title">Ruta de armado</p><div class="step-progress" aria-hidden="true"><span id="progressFill"></span></div><div class="step-list" id="stepList"></div><p class="steps-foot">Puedes regresar a cambiar cualquier pieza. Los ajustes de compatibilidad se recalculan al instante.</p></aside>
 <section class="stage panel" id="stage" aria-live="polite" aria-atomic="false"></section>
-<aside class="summary" id="resumen" aria-labelledby="summaryTitle"><div class="summary-head"><div><h2 id="summaryTitle">Mi ensamble</h2><small>Tu selección en tiempo real</small></div><span id="counter" class="count">0 / 8</span></div><div class="preview"><div class="preview-label"><span>Total ilustrativo</span><span>MXN</span></div><div class="preview-value" id="sideTotal">$0 <small>MXN</small></div></div><ul class="mini-list" id="miniList" aria-label="Lista de componentes elegidos"></ul><div class="summary-status" id="sideStatus" role="status"></div><div class="summary-foot"><button class="btn" id="clearBtn" type="button">↺ Reiniciar</button><button class="btn" id="reportBtn" type="button">Ver análisis →</button></div><div class="tiny">Precios de ejemplo; no son cotizaciones. Fotos comerciales cargadas por Internet. Se verifican reglas conocidas, no todas las particularidades de cada fabricante.</div></aside>
+<aside class="summary" id="resumen" aria-labelledby="summaryTitle"><div class="summary-head"><div><h2 id="summaryTitle">Mi ensamble</h2><small>Tu selección en tiempo real</small></div><span id="counter" class="count">0 / 8</span></div><div class="preview"><div class="preview-label"><span>Total ilustrativo</span><span>MXN</span></div><div class="preview-value" id="sideTotal">$0 <small>MXN</small></div></div><div class="summary-budget" id="sideBudget" hidden></div><ul class="mini-list" id="miniList" aria-label="Lista de componentes elegidos"></ul><div class="summary-status" id="sideStatus" role="status"></div><div class="summary-foot"><button class="btn" id="clearBtn" type="button">↺ Reiniciar</button><button class="btn" id="reportBtn" type="button">Ver análisis →</button></div><div class="tiny">Precios de ejemplo; no son cotizaciones. Fotos comerciales cargadas por Internet. Se verifican reglas conocidas, no todas las particularidades de cada fabricante.</div></aside>
 </div>
 </main>
-<footer id="pie"><div class="wrap"><span><strong>PC Arm</strong> · Creado por: <strong>Edgar Antonio Hernandez vasquez</strong></span><span>Sin registro · Se guarda localmente en este navegador · Precios ilustrativos · Imágenes de fabricantes y comercios (ver FUENTES_FOTOGRAFIAS.txt) · Enlaces externos de búsqueda</span></div></footer>
+<footer id="pie"><div class="wrap"><span><strong>EAHV</strong> · Proyecto de página para ayuda de armado de PC</span></div></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
 'use strict';
@@ -399,7 +461,7 @@ function shopLinks(p,compact=false){
 function photoFor(item){return PHOTO_CATALOG[item.id] || (item.id.startsWith('included-') ? PHOTO_CATALOG.__wraith : null)}
 
 const STORAGE_KEY='pcarm-wizard-v3';
-const state={selected:{},step:0,search:'',compatibleOnly:true,resolution:'1440p'};
+const state={selected:{},step:0,search:'',compatibleOnly:true,resolution:'1440p',view:'intro',setupDone:false,mode:'free',budget:0,purpose:'gaming'};
 const el=id=>document.getElementById(id);
 const price=n=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(n);
 const escapeText=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
@@ -412,8 +474,43 @@ function itemsFor(key,selection=state.selected){
  return items;
 }
 function fromId(key,id,selection){return itemsFor(key,selection).find(x=>x.id===id)||null}
-function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({chosen:Object.fromEntries(STEPS.filter(s=>state.selected[s.key]).map(s=>[s.key,state.selected[s.key].id])),resolution:state.resolution}))}catch(e){}}
-function restore(){try{const o=JSON.parse(localStorage.getItem(STORAGE_KEY));if(!o||!o.chosen)return;for(const s of STEPS){const item=fromId(s.key,o.chosen[s.key],state.selected);if(item)state.selected[s.key]=item}if(['1080p','1440p','4K'].includes(o.resolution))state.resolution=o.resolution;}catch(e){}}
+function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({chosen:Object.fromEntries(STEPS.filter(s=>state.selected[s.key]).map(s=>[s.key,state.selected[s.key].id])),resolution:state.resolution,mode:state.mode,budget:state.budget,purpose:state.purpose,setupDone:state.setupDone}))}catch(e){}}
+// Un ensamble guardado se puede retomar si el usuario lo decide, pero nunca
+// se abre automaticamente al entrar o actualizar la pagina.
+let savedBuild=null;
+function restore(){
+ try{
+  const o=JSON.parse(localStorage.getItem(STORAGE_KEY));
+  if(o&&o.chosen&&Object.values(o.chosen).some(Boolean))savedBuild=o;
+ }catch(e){savedBuild=null}
+ state.view='intro';
+ state.setupDone=false;
+ state.selected={};
+ state.step=0;
+ state.search='';
+ state.mode='free';
+ state.budget=0;
+ state.purpose='gaming';
+}
+function resumeBuild(){
+ if(!savedBuild)return;
+ const o=savedBuild;
+ state.selected={};
+ for(const s of STEPS){const item=fromId(s.key,o.chosen?.[s.key],state.selected);if(item)state.selected[s.key]=item}
+ if(['1080p','1440p','4K'].includes(o.resolution))state.resolution=o.resolution;
+ state.mode='free';state.budget=0;state.purpose='gaming';
+ if(o.mode==='budget'&&Number.isFinite(o.budget)&&o.budget>=BUDGET_MIN){
+  state.mode='budget';state.budget=o.budget;
+  state.purpose=['gaming','office','creative'].includes(o.purpose)?o.purpose:'gaming';
+ }
+ state.setupDone=true;
+ state.view='wizard';
+ const firstMissing=STEPS.findIndex(s=>!state.selected[s.key]);
+ state.step=firstMissing<0?8:firstMissing;
+ state.search='';
+ savedBuild=null;
+ render();focusStage();toast('Ensamble anterior recuperado');
+}
 function total(sel=state.selected){return Object.values(sel).reduce((n,p)=>n+p.price,0)}
 /** Technical checks only apply when both dependent parts are chosen. */
 function checkBuild(s){
@@ -459,12 +556,87 @@ function completedCount(){return STEPS.filter(s=>state.selected[s.key]).length}
 function focusStage(){if(window.matchMedia('(max-width:930px)').matches)el('stage').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth',block:'start'})}
 let toastTimer;
 function toast(msg){const t=el('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2600)}
+const BUDGET_MIN=15000,BUDGET_MAX=100000;
+const PURPOSE_LABELS={gaming:'Juegos',office:'Estudio y oficina',creative:'Diseño y edición'};
+/** Optimiza entre productos de catálogo, no compara precios reales del mercado. */
+function candidateValue(pieces,purpose,amount){
+ const {CPU,MB,RAM,GPU,SSD,PSU,CASE,COOL}=pieces;
+ const socketBonus=CPU.socket==='AM5'?3:0;
+ const extras=(PSU.watts>=750?0.5:0)+(CASE.forms.includes('ATX')?0.4:0)+(COOL.stockOnly?0:0.5)+(MB.name.includes('WIFI')?0.6:0);
+ let utility;
+ if(purpose==='office')utility=CPU.score*1.65+GPU.score*0.18+(RAM.gb>=32?15:0)+(SSD.tb>=2?9:0)+socketBonus+extras;
+ else if(purpose==='creative')utility=CPU.score*1.0+GPU.score*1.45+(RAM.gb>=32?14:0)+(SSD.tb>=2?8:0)+socketBonus+extras;
+ else utility=CPU.score*.69+GPU.score*1.75-Math.abs(CPU.score-GPU.score)*.15+(RAM.gb>=32?5:0)+(SSD.tb>=2?2:0)+socketBonus+extras;
+ // Prefer lower-cost parts when practical utility is similar.
+ return utility-amount*.000025;
+}
+function findBudgetBuild(maxAmount,purpose){
+ let best=null,bestScore=-Infinity,bestAmount=Infinity;
+ for(const CPU of CATALOG.CPU)for(const MB of CATALOG.MB){
+  if(CPU.socket!==MB.socket)continue;
+  for(const RAM of CATALOG.RAM){
+   if(RAM.ram!==MB.ram)continue;
+   for(const GPU of CATALOG.GPU)for(const PSU of CATALOG.PSU){
+    if(PSU.watts<GPU.recommendedPsu)continue;
+    for(const CASE of CATALOG.CASE){
+     if(!CASE.forms.includes(MB.form)||(Number.isFinite(GPU.length)&&GPU.length>CASE.maxGpu))continue;
+     for(const COOL of itemsFor('COOL',{CPU})){
+      if(!COOL.sockets.includes(CPU.socket)||COOL.height>CASE.maxCool)continue;
+      const subtotal=CPU.price+MB.price+RAM.price+GPU.price+PSU.price+CASE.price+COOL.price;
+      if(subtotal+1199>maxAmount)continue;
+      for(const SSD of CATALOG.SSD){
+       if(SSD.interface!=='NVMe'||!MB.nvme)continue;
+       const amount=subtotal+SSD.price;
+       if(amount>maxAmount)continue;
+       const draft={CPU,MB,RAM,GPU,SSD,PSU,CASE,COOL};
+       const score=candidateValue(draft,purpose,amount);
+       if(score>bestScore+1e-6||(Math.abs(score-bestScore)<1e-6&&amount<bestAmount)){
+        bestScore=score;bestAmount=amount;best=draft;
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ return best;
+}
+function budgetSummary(){
+ if(state.mode!=='budget')return '';
+ const difference=state.budget-total(),over=difference<0;
+ return `<div class="budget-strip ${over?'over':''}"><strong>${over?'⚠ Presupuesto superado':'✓ Presupuesto de referencia'}:</strong> ${price(state.budget)} MXN · Total seleccionado: ${price(total())} MXN · ${over?'Excedes el monto por '+price(-difference):'Margen disponible: '+price(difference)}. <button type="button" data-change-budget>Modificar presupuesto</button></div>`;
+}
+function renderIntro(){
+ const hasPieces=completedCount()>0;
+ el('stage').innerHTML=`<span class="setup-kicker">TU PC COMIENZA AQUÍ</span><h2 class="setup-title">¿Cómo quieres armar tu computadora?</h2><p class="setup-lead">Puedes elegir todas las piezas por tu cuenta o indicar cuánto planeas gastar para recibir una <strong>propuesta de 8 componentes compatibles</strong>. Después podrás revisar, comparar y cambiar cualquier modelo.</p>
+ <div class="setup-modes"><div class="setup-choice"><span class="choice-icon">$</span><h3>Armar según mi presupuesto</h3><p>Indica un monto aproximado y seleccionaremos una combinación equilibrada a partir del catálogo disponible.</p>
+ <label for="budgetInput" style="font-size:12px;font-weight:800;color:#416b49">Presupuesto aproximado (MXN)</label>
+ <div class="budget-field"><strong>$</strong><input id="budgetInput" type="number" min="${BUDGET_MIN}" max="${BUDGET_MAX}" step="500" inputmode="numeric" value="${state.budget>=BUDGET_MIN?state.budget:20000}" aria-describedby="budgetRule budgetError"><small>MXN</small></div>
+ <div class="budget-presets" role="group" aria-label="Presupuestos sugeridos">${[15000,20000,25000,35000].map(n=>`<button type="button" class="budget-preset" data-budget-preset="${n}">${price(n)}</button>`).join('')}</div>
+ <div class="usage-field"><span>¿Para qué usarás principalmente tu PC?</span><div class="usage-options"><label><input type="radio" name="pcPurpose" value="gaming" ${state.purpose==='gaming'?'checked':''}> Juegos</label><label><input type="radio" name="pcPurpose" value="office" ${state.purpose==='office'?'checked':''}> Estudio / oficina</label><label><input type="radio" name="pcPurpose" value="creative" ${state.purpose==='creative'?'checked':''}> Edición / 3D</label></div></div>
+ <div class="budget-help" id="budgetRule">Desde ${price(BUDGET_MIN)} hasta ${price(BUDGET_MAX)} MXN. El mínimo considera una PC completa con tarjeta gráfica dedicada, usando precios de demostración. Se puede escribir otro monto en ese rango.</div>
+ <div class="budget-error" id="budgetError" role="alert"></div><button type="button" id="startBudget" class="setup-action">✨ Recomendar mi PC →</button></div>
+ <div class="setup-choice free"><span class="choice-icon">☷</span><h3>Modo libre</h3><p>Selecciona desde cero, paso a paso, el procesador, la placa madre y todos los demás componentes sin limitar tu presupuesto.</p><div style="background:#f5f9f2;border:1px solid #e3ebdf;padding:12px;border-radius:10px;font-size:12px;color:#59705d;line-height:1.6">✓ Libertad para comparar modelos<br>✓ Avisos de compatibilidad<br>✓ Análisis y PDF final</div><button type="button" id="startFree" class="setup-action soft">${hasPieces?'Seguir en modo libre →':'Comenzar en modo libre →'}</button></div></div>
+ ${savedBuild?`<div class="setup-resume">¿Ya estabas armando una PC? <button type="button" id="resumeBuild">Retomar mi último ensamble →</button></div>`:''}
+ <p class="setup-footer">Los montos son orientativos y corresponden a los precios ilustrativos de PC Arm; no son cotizaciones de Amazon o Mercado Libre. Una combinación sin conflictos en las reglas verificadas no garantiza compatibilidad total.</p>`;
+ updateBudgetPresets();
+}
+function updateBudgetPresets(){const input=el('budgetInput');if(!input)return;for(const button of el('stage').querySelectorAll('[data-budget-preset]')){button.classList.toggle('selected',Number(button.dataset.budgetPreset)===Number(input.value))}}
+function renderProposal(){
+ const rest=state.budget-total();
+ el('stage').innerHTML=`<div class="stage-top"><div><span class="step-kicker">PROPUESTA SEGÚN TU PRESUPUESTO</span><h2>Una PC pensada para ti</h2><p class="stage-desc">Con un presupuesto de ${price(state.budget)} MXN y uso principal en <strong>${PURPOSE_LABELS[state.purpose]}</strong>, esta combinación se ajusta a los componentes y precios de ejemplo de PC Arm.</p></div><span class="stage-icon">✦</span></div>
+ ${budgetSummary()}<div class="stage-info"><span style="font-size:17px">✓</span><span>Propuesta automática con 8 piezas y sin conflictos en las comprobaciones técnicas disponibles. Puedes cambiar cualquier componente sin perder la posibilidad de comparar.</span></div>
+ <h3 class="section-title">Tu selección recomendada</h3><div class="proposal-grid">${STEPS.map((s,i)=>{const p=state.selected[s.key];return `<article class="proposal-part"><span class="proposal-icon">${s.icon}</span><div class="proposal-info"><small>${s.label}</small><strong>${escapeText(p.name)}</strong><b>${price(p.price)}</b></div><button type="button" data-edit="${i}" aria-label="Cambiar ${escapeText(s.label)}">Editar</button></article>`}).join('')}</div>
+ <div class="proposal-actions"><button type="button" class="btn primary" id="reviewProposal">Revisar pieza por pieza →</button><button type="button" class="btn" id="showProposalReport">Ver resultado completo</button></div>
+ <p class="disclaimer">El margen disponible de ${price(Math.max(rest,0))} no es una cantidad que tengas que gastar. Los precios, rendimiento y recomendaciones son simulaciones orientativas. Verifica siempre disponibilidad y características reales.</p>`;
+}
 function renderSteps(){
  const count=completedCount();el('progressFill').style.width=(count/STEPS.length*100)+'%';
  el('stepList').innerHTML=STEPS.map((s,i)=>`<button type="button" class="step-button ${i===state.step?'current':''} ${state.selected[s.key]?'done':''}" data-step="${i}" ${i>0&&!STEPS.slice(0,i).every(a=>state.selected[a.key])?'disabled':''} ${i===state.step?'aria-current="step"':''}><span class="step-number">${state.selected[s.key]?'✓':String(i+1).padStart(2,'0')}</span><span class="step-copy"><span class="step-title">${s.label}</span><span class="step-small">${state.selected[s.key]?'Seleccionado':i===state.step?'En este paso':'Pendiente'}</span></span><span class="step-check">${i===state.step?'›':''}</span></button>`).join('')+`<div class="step-final"><button type="button" data-step="8" class="step-button ${state.step===8?'current':''}" ${count<STEPS.length?'disabled':''}><span class="step-number">★</span><span class="step-copy"><span class="step-title">Resultado final</span><span class="step-small">Análisis de tu PC</span></span></button></div>`;
 }
 function renderSide(){
  const count=completedCount(),check=checkBuild(state.selected);
+ const sideBudget=el('sideBudget');sideBudget.hidden=state.mode!=='budget';sideBudget.classList.toggle('over',state.mode==='budget'&&total()>state.budget);if(state.mode==='budget'){const diff=state.budget-total();sideBudget.innerHTML=`<strong>Presupuesto: ${price(state.budget)} MXN</strong>${diff<0?'Sobrepasado por '+price(-diff):'Disponible: '+price(diff)}<br><button type="button" id="adjustBudget">Ajustar presupuesto</button>`;}
  el('counter').textContent=count+' / '+STEPS.length+' piezas';el('sideTotal').innerHTML=price(total())+' <small>MXN</small>';
  el('miniList').innerHTML=STEPS.map(s=>`<li><span class="subkey">${s.short}</span><span class="subval ${state.selected[s.key]?'':'placeholder'}" title="${escapeText(state.selected[s.key]?.name||'Por elegir')}">${escapeText(state.selected[s.key]?.name||'Por elegir')}</span></li>`).join('');
  const box=el('sideStatus');box.classList.toggle('warning',check.errors.length>0);
@@ -477,7 +649,7 @@ function renderProductCard(key,p){const review=candidateReview(key,p),picked=sta
  return `<article class="product ${picked?'picked':''} ${!review.ok?'conflict':''}"><div class="product-art"><img src="${escapeText(imageFor(key,p))}" data-pc-photo="${escapeText(p.id)}" data-photo-key="${key}" alt="Fotografía de ${escapeText(p.name)}" loading="lazy" referrerpolicy="no-referrer"><span class="art-caption" title="Fotografía comercial de ${escapeText(photoFor(p)?.source||'origen no especificado')}">Foto del modelo</span></div><div class="product-body"><span class="flag ${!review.ok?'error':picked?'':'neutral'}">${!review.ok?'⚠ Requiere cambios':picked?'✓ Ya seleccionado':'✓ Sin conflicto detectado'}</span><h3>${escapeText(p.name)}</h3><p class="desc">${escapeText(p.desc)}</p><div class="pills">${p.specs.map(x=>`<span>${escapeText(x)}</span>`).join('')}</div>${!review.ok?`<p class="problem">${escapeText(review.conflicts[0])}</p>`:''}<div class="product-bottom"><div class="product-price">${price(p.price)}<small>Precio de ejemplo</small></div><button type="button" class="pick-btn" data-pick="${escapeText(p.id)}" aria-pressed="${picked}">${picked?'✓ Elegido':'Elegir +'}</button></div><div class="product-shop">${shopLinks(p)}</div></div></article>`;
 }
 function renderSelection(){const s=STEPS[state.step],key=s.key;const needle=state.search.trim().toLocaleLowerCase('es');const items=itemsFor(key).filter(p=>(!state.compatibleOnly||candidateReview(key,p).ok)&&(!needle||(p.name+' '+p.desc+' '+p.specs.join(' ')).toLocaleLowerCase('es').includes(needle)));
- const stage=el('stage');stage.innerHTML=`<div class="stage-top"><div><span class="step-kicker">PASO ${String(state.step+1).padStart(2,'0')} DE 08</span><h2>${s.title}</h2><p class="stage-desc">${s.description}</p></div><div class="stage-icon" aria-hidden="true">${s.icon}</div></div><div class="stage-info"><span style="font-size:17px">✳</span><span>${s.tip}</span></div><div class="filters"><label class="search"><span aria-hidden="true">⌕</span><input type="search" id="searchInput" placeholder="Buscar modelo o característica" value="${escapeText(state.search)}" aria-label="Buscar componentes"></label><label class="filter-label"><input type="checkbox" id="onlyCompatible" ${state.compatibleOnly?'checked':''}> Mostrar solo compatibles</label></div><div class="available-hint">${items.length} modelos visibles · ${itemsFor(key).filter(p=>candidateReview(key,p).ok).length} compatibles en esta etapa · ${itemsFor(key).length} modelos en catálogo</div><div class="product-grid" id="productGrid">${items.length?items.map(p=>renderProductCard(key,p)).join(''):'<div class="empty"><strong>No hay resultados con esos filtros.</strong>Prueba con otra búsqueda o desactiva “Mostrar solo compatibles”.</div>'}</div><div class="step-actions"><span class="action-help">${state.selected[key]?'✓ Componente elegido. Puedes continuar o cambiarlo.':'Selecciona una opción para continuar.'}</span><div class="action-buttons"><button type="button" class="btn" id="backBtn" ${state.step===0?'disabled':''}>← Anterior</button><button type="button" class="btn primary" id="nextBtn" ${!state.selected[key]?'disabled':''}>${state.step===STEPS.length-1?'Ver resultado →':'Continuar →'}</button></div></div>`;
+ const stage=el('stage');stage.innerHTML=`<div class="stage-top"><div><span class="step-kicker">PASO ${String(state.step+1).padStart(2,'0')} DE 08</span><h2>${s.title}</h2><p class="stage-desc">${s.description}</p></div><div class="stage-icon" aria-hidden="true">${s.icon}</div></div><div class="stage-info"><span style="font-size:17px">✳</span><span>${s.tip}</span></div>${budgetSummary()}<div class="filters"><label class="search"><span aria-hidden="true">⌕</span><input type="search" id="searchInput" placeholder="Buscar modelo o característica" value="${escapeText(state.search)}" aria-label="Buscar componentes"></label><label class="filter-label"><input type="checkbox" id="onlyCompatible" ${state.compatibleOnly?'checked':''}> Mostrar solo compatibles</label></div><div class="available-hint">${items.length} modelos visibles · ${itemsFor(key).filter(p=>candidateReview(key,p).ok).length} compatibles en esta etapa · ${itemsFor(key).length} modelos en catálogo</div><div class="product-grid" id="productGrid">${items.length?items.map(p=>renderProductCard(key,p)).join(''):'<div class="empty"><strong>No hay resultados con esos filtros.</strong>Prueba con otra búsqueda o desactiva “Mostrar solo compatibles”.</div>'}</div><div class="step-actions"><span class="action-help">${state.selected[key]?'✓ Componente elegido. Puedes continuar o cambiarlo.':'Selecciona una opción para continuar.'}</span><div class="action-buttons"><button type="button" class="btn" id="backBtn" ${state.step===0?'disabled':''}>← Anterior</button><button type="button" class="btn primary" id="nextBtn" ${!state.selected[key]?'disabled':''}>${state.step===STEPS.length-1?'Ver resultado →':'Continuar →'}</button></div></div>`;
 }
 function bar(v){return `<div class="bar" role="img" aria-label="Índice ${v} de 100"><span style="width:${v}%"></span></div>`}
 function performance(){const cpu=state.selected.CPU,gpu=state.selected.GPU,ram=state.selected.RAM;let res=state.resolution;const weights={'1080p':1,'1440p':.84,'4K':.64};const gaming=Math.min(100,Math.round((cpu.score*.28+gpu.score*.72)*weights[res]));const adjustedCpu=cpu.score+({'1080p':-7,'1440p':8,'4K':21}[res]);const diff=adjustedCpu-gpu.score;const bal=Math.max(30,Math.min(100,100-Math.abs(diff)));let head='',detail='';
@@ -485,7 +657,7 @@ function performance(){const cpu=state.selected.CPU,gpu=state.selected.GPU,ram=s
  else if(diff>17){head='Posible límite por tarjeta gráfica';detail='La tarjeta gráfica podría ser el factor principal en juegos exigentes a esta resolución. Esto es habitual y no significa incompatibilidad.'}
  else{head='Combinación relativamente equilibrada';detail='Los perfiles de CPU y GPU parecen razonablemente equilibrados en esta simulación; el resultado real depende de cada juego.'}
  const creativity=Math.round(Math.min(100,cpu.score*.52+gpu.score*.31+Math.min(ram.gb,32)/32*17));return{gaming,bal,head,detail,creativity};}
-function reportText(){const checks=checkBuild(state.selected),pct=checks.checks.length?Math.round(checks.passed/checks.checks.length*100):0;const m=performance();return ['PC ARM · RESUMEN DE ENSAMBLE','',...STEPS.map(s=>s.label+': '+state.selected[s.key].name+' — '+price(state.selected[s.key].price)),'','TOTAL ILUSTRATIVO: '+price(total())+' MXN','','Comprobaciones técnicas: '+checks.passed+' de '+checks.checks.length+' superadas ('+pct+'%)',...checks.checks.map(c=>(c.ok?'[OK] ':'[REVISAR] ')+c.name+': '+c.message),'','Análisis orientativo ('+state.resolution+')','Índice relativo para juegos: '+m.gaming+'/100','Índice experimental de equilibrio: '+m.bal+'/100',m.head+': '+m.detail,'','ADVERTENCIAS POR VERIFICAR:',...checks.warnings.map(w=>'- '+w),'','Precios y puntuaciones orientativos, sin FPS reales medidos. El porcentaje representa pruebas realizadas, NO una garantía de compatibilidad física ni ausencia de cuellos de botella.'].join('\n')}
+function reportText(){const checks=checkBuild(state.selected),pct=checks.checks.length?Math.round(checks.passed/checks.checks.length*100):0;const m=performance();return ['PC ARM · RESUMEN DE ENSAMBLE','',...(state.mode==='budget'?['Presupuesto indicado: '+price(state.budget)+' MXN','Uso principal: '+PURPOSE_LABELS[state.purpose], 'Diferencia frente al presupuesto: '+price(state.budget-total())+' MXN','']:[]),...STEPS.map(s=>s.label+': '+state.selected[s.key].name+' — '+price(state.selected[s.key].price)),'','TOTAL ILUSTRATIVO: '+price(total())+' MXN','','Comprobaciones técnicas: '+checks.passed+' de '+checks.checks.length+' superadas ('+pct+'%)',...checks.checks.map(c=>(c.ok?'[OK] ':'[REVISAR] ')+c.name+': '+c.message),'','Análisis orientativo ('+state.resolution+')','Índice relativo para juegos: '+m.gaming+'/100','Índice experimental de equilibrio: '+m.bal+'/100',m.head+': '+m.detail,'','ADVERTENCIAS POR VERIFICAR:',...checks.warnings.map(w=>'- '+w),'','Precios y puntuaciones orientativos, sin FPS reales medidos. El porcentaje representa pruebas realizadas, NO una garantía de compatibilidad física ni ausencia de cuellos de botella.'].join('\n')}
 
 /** Generador PDF básico integrado, sin biblioteca externa ni conexión. */
 function downloadPdf(){
@@ -499,13 +671,14 @@ function downloadPdf(){
   cmd('BT /'+(bold?'F2':'F1')+' '+size+' Tf '+color+' rg 1 0 0 1 '+x.toFixed(1)+' '+at.toFixed(1)+' Tm ('+esc(s)+') Tj ET');
  }
  function start(){ops=[];y=750;cmd('0.09 0.17 0.12 rg 0 776 595.28 66 re f');draw('PC ARM',margin,801,24,true,'0.81 0.98 0.48');draw('RESUMEN DEL ENSAMBLE',margin+180,802,11,true,'1 1 1');draw('Precios ilustrativos en MXN',margin,758,9,false,'0.23 0.33 0.25')}
- function finish(){draw('Creado por: Edgar Antonio Hernandez vasquez',margin,33,8,false,'0.36 0.44 0.37');draw('Proyecto de demostracion - verificar modelos y disponibilidad.',margin,22,7,false,'0.45 0.49 0.46');pages.push(ops.join('\n')+'\n')}
+ function finish(){draw('EAHV - Proyecto de pagina para ayuda de armado de PC',margin,33,8,false,'0.36 0.44 0.37');draw('Proyecto de demostracion - verificar modelos y disponibilidad.',margin,22,7,false,'0.45 0.49 0.46');pages.push(ops.join('\n')+'\n')}
  function ensure(h){if(y-h<58){finish();start()}}
  function txt(line,size=10,bold=false,indent=0,color){ensure(size+9);draw(line,margin+indent,y,size,bold,color);y-=size+8}
  function section(s){ensure(37);y-=6;txt(s,14,true,0,'0.13 0.43 0.25');y-=3}
  function wrap(s,max=92){const words=latin(s).split(/\s+/);let arr=[],t='';for(const w of words){if((t+' '+w).trim().length>max){if(t)arr.push(t);t=w}else t=(t+' '+w).trim()}if(t)arr.push(t);return arr.length?arr:['']}
  function para(s,size=9.2,indent=0,max=100){for(const row of wrap(s,max))txt(row,size,false,indent,'0.32 0.39 0.33')}
  start();
+ if(state.mode==='budget'){txt('Presupuesto indicado: '+price(state.budget)+' MXN',10,true);para('Uso principal: '+PURPOSE_LABELS[state.purpose]+' | Margen disponible: '+price(state.budget-total())+' MXN',9.2);y-=6}
  section('Componentes seleccionados');
  for(let i=0;i<STEPS.length;i++){
   const step=STEPS[i],p=state.selected[step.key];
@@ -551,7 +724,7 @@ function downloadPdf(){
 
 function renderReport(){const {checks,errors,passed,warnings}=checkBuild(state.selected);const score=checks.length?Math.round(passed/checks.length*100):0;const metrics=performance();
  el('stage').innerHTML=`<div class="stage-top"><div><span class="step-kicker">ENSAMBLE COMPLETADO</span><h2>Así quedaría tu PC ✦</h2><p class="stage-desc">Revisa tus 8 elecciones, los controles técnicos y una orientación de rendimiento. Puedes modificar una pieza en cualquier momento.</p></div><div class="stage-icon" aria-hidden="true">✓</div></div>
- <div class="report-top ${errors.length?'fail':''}"><div class="report-kicker">COMPATIBILIDAD BÁSICA · REGLAS EVALUADAS</div><div class="report-score">${score}% <small>${passed} de ${checks.length} comprobaciones superadas</small></div><p>${errors.length?`Hay ${errors.length} conflicto(s) que conviene corregir antes de comprar.`:'No se detectaron conflictos en las reglas evaluadas.'} El porcentaje mide únicamente estas verificaciones, no garantiza compatibilidad total.</p></div>
+ ${budgetSummary()}<div class="report-top ${errors.length?'fail':''}"><div class="report-kicker">COMPATIBILIDAD BÁSICA · REGLAS EVALUADAS</div><div class="report-score">${score}% <small>${passed} de ${checks.length} comprobaciones superadas</small></div><p>${errors.length?`Hay ${errors.length} conflicto(s) que conviene corregir antes de comprar.`:'No se detectaron conflictos en las reglas evaluadas.'} El porcentaje mide únicamente estas verificaciones, no garantiza compatibilidad total.</p></div>
  <h3 class="section-title">Tus componentes <span style="font-size:13px;color:#799079">${price(total())} MXN</span></h3><div class="selection-grid">${STEPS.map((s,i)=>{const p=state.selected[s.key];return `<div class="selected-row"><img src="${escapeText(imageFor(s.key,p))}" data-pc-photo="${escapeText(p.id)}" data-photo-key="${s.key}" alt="Fotografía de ${escapeText(p.name)}" loading="lazy" referrerpolicy="no-referrer"><div class="selected-row-content"><small>${s.label}</small><strong>${escapeText(p.name)}</strong><b>${price(p.price)}</b></div><div class="selected-row-actions"><button class="edit" type="button" data-edit="${i}" aria-label="Cambiar ${s.label}">Editar</button>${shopLinks(p,true)}</div></div>`}).join('')}</div>
  <h3 class="section-title">Comprobaciones de compatibilidad</h3><div class="check-list">${checks.map(c=>`<div class="check ${c.ok?'ok':'bad'}"><span class="check-icon">${c.ok?'✓':'!'}</span><div><strong>${c.name}</strong><span>${escapeText(c.message)}</span></div></div>`).join('')}</div>
  <h3 class="section-title">Rendimiento orientativo</h3><p class="stage-desc">Selecciona la resolución para explorar cómo cambia el comportamiento relativo del equipo.</p><div class="resolution-group" aria-label="Resolución de referencia">${['1080p','1440p','4K'].map(r=>`<button type="button" class="resolution-btn ${state.resolution===r?'active':''}" data-resolution="${r}" aria-pressed="${state.resolution===r}">${r}</button>`).join('')}</div>
@@ -563,10 +736,24 @@ function renderReport(){const {checks,errors,passed,warnings}=checkBuild(state.s
  <div class="report-actions"><button type="button" class="btn primary" id="downloadBtn">↓ Descargar PDF</button><button type="button" class="btn" id="copyBtn">⧉ Copiar resumen</button><button type="button" class="btn" id="printBtn">▣ Imprimir</button><button type="button" class="btn" data-edit="0">← Cambiar componentes</button></div>
  <p class="disclaimer">Nota: este prototipo no consulta inventarios, precios en vivo, BIOS/QVL, conectores ni benchmarks independientes. Los enlaces de Amazon y Mercado Libre abren resultados de búsqueda; no aseguran una publicación, precio ni disponibilidad. Nunca se puede asegurar que una PC tendrá cero cuello de botella en todos los juegos.</p>`;
 }
-function render(){renderSteps();renderSide();if(state.step===8&&completedCount()===8)renderReport();else{if(state.step===8)state.step=STEPS.findIndex(s=>!state.selected[s.key]);renderSelection()}save()}
-function jump(n){if(n===8&&completedCount()<8){toast('Primero completa los 8 componentes.');return}if(n>0&&n<8&&!STEPS.slice(0,n).every(s=>state.selected[s.key])){toast('Completa los pasos previos primero.');return}state.step=n;state.search='';render();focusStage()}
+function render(){el('configurador').classList.toggle('setup-mode',state.view==='intro');if(state.view==='intro'){renderIntro();return}renderSteps();renderSide();if(state.view==='proposal')renderProposal();else if(state.step===8&&completedCount()===8)renderReport();else{if(state.step===8)state.step=STEPS.findIndex(s=>!state.selected[s.key]);renderSelection()}save()}
+function jump(n){if(!state.setupDone){toast('Elige primero un modo de armado.');return}state.view='wizard';if(n===8&&completedCount()<8){toast('Primero completa los 8 componentes.');return}if(n>0&&n<8&&!STEPS.slice(0,n).every(s=>state.selected[s.key])){toast('Completa los pasos previos primero.');return}state.step=n;state.search='';render();focusStage()}
 el('stepList').addEventListener('click',e=>{const b=e.target.closest('[data-step]');if(b&&!b.disabled)jump(Number(b.dataset.step))});
 el('stage').addEventListener('click',e=>{
+ if(e.target.closest('#resumeBuild')){resumeBuild();return}
+ const preset=e.target.closest('[data-budget-preset]');if(preset){el('budgetInput').value=preset.dataset.budgetPreset;updateBudgetPresets();el('budgetError').textContent='';return}
+ if(e.target.closest('#startFree')){savedBuild=null;state.selected={};state.setupDone=true;state.view='wizard';state.mode='free';state.budget=0;state.step=0;state.search='';render();toast('Modo libre activado');return}
+ if(e.target.closest('#startBudget')){
+  const input=el('budgetInput'),amount=Number(input.value);
+  if(!Number.isFinite(amount)||!Number.isInteger(amount)||amount<BUDGET_MIN||amount>BUDGET_MAX){el('budgetError').textContent='Escribe un presupuesto entre '+price(BUDGET_MIN)+' y '+price(BUDGET_MAX)+' MXN.';input.focus();return}
+  const purpose=el('stage').querySelector('input[name="pcPurpose"]:checked')?.value||'gaming';
+  const recommendation=findBudgetBuild(amount,purpose);
+  if(!recommendation){el('budgetError').textContent='No encontramos una PC completa con ese monto en este catálogo. Prueba aumentar tu presupuesto.';return}
+  savedBuild=null;state.selected=recommendation;state.mode='budget';state.purpose=purpose;state.budget=amount;state.setupDone=true;state.step=0;state.view='proposal';state.search='';render();focusStage();toast('✓ Propuesta generada según tu presupuesto');return;
+ }
+ if(e.target.closest('[data-change-budget]')){state.view='intro';render();focusStage();return}
+ if(e.target.closest('#reviewProposal')){jump(0);return}
+ if(e.target.closest('#showProposalReport')){jump(8);return}
  const pick=e.target.closest('[data-pick]');if(pick){const key=STEPS[state.step].key,p=itemsFor(key).find(x=>x.id===pick.dataset.pick);if(p){state.selected[key]=p; // If a CPU changes, its previously included stock cooler becomes invalid.
  if(key==='CPU'&&state.selected.COOL?.stockOnly&&state.selected.COOL.stockOnly!==p.id)delete state.selected.COOL;
  render();toast('✓ '+STEPS[state.step].label+' seleccionado');}return}
@@ -580,9 +767,16 @@ el('stage').addEventListener('click',e=>{
 });
 function fallbackCopy(str){const t=document.createElement('textarea');t.value=str;t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();try{document.execCommand('copy');toast('Resumen copiado')}catch(e){toast('No se pudo copiar: utiliza Descargar PDF')}t.remove()}
 let filterTimer;
-el('stage').addEventListener('input',e=>{if(e.target.id==='searchInput'){state.search=e.target.value;const focus=e.target.selectionStart;const grid=el('productGrid');const key=STEPS[state.step].key;const needle=state.search.trim().toLocaleLowerCase('es');const choices=itemsFor(key).filter(p=>(!state.compatibleOnly||candidateReview(key,p).ok)&&(!needle||(p.name+' '+p.desc+' '+p.specs.join(' ')).toLocaleLowerCase('es').includes(needle)));grid.innerHTML=choices.length?choices.map(p=>renderProductCard(key,p)).join(''):'<div class="empty"><strong>Sin resultados.</strong>Prueba otra búsqueda o cambia el filtro.</div>';const hint=el('stage').querySelector('.available-hint');if(hint)hint.textContent=choices.length+' modelos visibles · '+itemsFor(key).filter(p=>candidateReview(key,p).ok).length+' compatibles en esta etapa · '+itemsFor(key).length+' modelos en catálogo';}});
+el('stage').addEventListener('input',e=>{if(e.target.id==='budgetInput'){updateBudgetPresets();el('budgetError').textContent='';return}if(e.target.id==='searchInput'){state.search=e.target.value;const focus=e.target.selectionStart;const grid=el('productGrid');const key=STEPS[state.step].key;const needle=state.search.trim().toLocaleLowerCase('es');const choices=itemsFor(key).filter(p=>(!state.compatibleOnly||candidateReview(key,p).ok)&&(!needle||(p.name+' '+p.desc+' '+p.specs.join(' ')).toLocaleLowerCase('es').includes(needle)));grid.innerHTML=choices.length?choices.map(p=>renderProductCard(key,p)).join(''):'<div class="empty"><strong>Sin resultados.</strong>Prueba otra búsqueda o cambia el filtro.</div>';const hint=el('stage').querySelector('.available-hint');if(hint)hint.textContent=choices.length+' modelos visibles · '+itemsFor(key).filter(p=>candidateReview(key,p).ok).length+' compatibles en esta etapa · '+itemsFor(key).length+' modelos en catálogo';}});
 el('stage').addEventListener('change',e=>{if(e.target.id==='onlyCompatible'){state.compatibleOnly=e.target.checked;renderSelection()}});
-el('clearBtn').addEventListener('click',()=>{if(!completedCount())return;if(!window.confirm('¿Quieres borrar las selecciones y empezar de nuevo?'))return;state.selected={};state.step=0;state.search='';render();toast('Se reinició el ensamble')});
+el('clearBtn').addEventListener('click',()=>{
+ if(completedCount()&&!window.confirm('¿Quieres borrar las selecciones y volver a elegir el modo de armado?'))return;
+ state.selected={};state.step=0;state.search='';state.view='intro';state.setupDone=false;
+ state.mode='free';state.budget=0;state.purpose='gaming';savedBuild=null;
+ try{localStorage.removeItem(STORAGE_KEY)}catch(e){}
+ render();toast('Elige cómo quieres comenzar');
+});
+el('resumen').addEventListener('click',e=>{if(e.target.closest('#adjustBudget')){state.view='intro';render();focusStage()}});
 el('reportBtn').addEventListener('click',()=>jump(8));
 
 // Si el servidor de imágenes rechaza la petición o falta Internet, se usa el SVG local.
@@ -600,6 +794,10 @@ el('stage').addEventListener('error',event=>{
 },true);
 
 restore();render();
+window.addEventListener('pageshow',event=>{
+ if(!event.persisted)return;
+ restore();render();
+});
 </script>
 </body>
 </html>
